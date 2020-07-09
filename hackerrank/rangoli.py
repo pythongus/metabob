@@ -3,44 +3,41 @@ Rangoli Module
 
 Prints the rangoli ascii art.
 """
+from typing import List
 
 
 BASE_CHAR = 96
 
 
-def get_dimensions(size):
+def get_dimensions(size: int):
     rows = size * 2 - 1
     cols = rows * 2 - 1
     middle = cols // 2 + 1
     return rows, cols, middle
 
 
-def create_lines(size):
+def create_lines(size: int):
     rows, cols, middle = get_dimensions(size)
     lines = []
-    for i in get_symmetrical_rows(size):
+    for i in get_symmetrical_rows(middle, size):
         line_draw = ['-'] * cols
-        for j in range(cols):
-            add_chars(i, j, middle, size, line_draw)
-
+        add_chars(i, line_draw, middle)
         lines.append(line_draw)
 
     return lines
 
 
-def add_chars(i, j, middle, size, line_draw):
-   for k in range(size):
-       if j == middle - (3 + 2 * k) or j == middle + (1 + 2 * k):
-           offset = BASE_CHAR + i + 1 + k
-           if offset <= BASE_CHAR + size:
-               line_draw[j] = chr(offset)
-       elif j == middle - 1:
-           offset = BASE_CHAR + i
-           line_draw[j] = chr(offset)
+def add_chars(positions: List[tuple], line_draw: list, middle: int):
+    line_columns, offset = positions
+    for pos in line_columns:
+        line_draw[pos - 1] = chr(BASE_CHAR + offset + abs(middle - pos) // 2)
 
 
-def get_symmetrical_rows(size):
-    return [i for i in range(size, 0, -1)] + [i for i in range(2, size + 1)] 
+def get_symmetrical_rows(middle: int, size: int):
+    offset = [i for i in range(size, 0, -1)] + [i for i in range(2, size + 1)]
+    positions = [tuple(range(middle - i, middle + i + 1, 2)) for i in range(0, middle, 2)] + \
+                [tuple(range(middle - i, middle + i + 1, 2))  for i in range(middle - 3, -1, -2)]
+    return zip(positions, offset)
 
 
 def print_rangoli(size):
