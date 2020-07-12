@@ -35,4 +35,6 @@ class Node():
             return None
         return Node(value=j.get('value'), left=Node.from_json(j.get('left')), right=Node.from_json(j.get('right')))
 
-print(min_values(Node.from_json(json.loads(sys.stdin.read().strip()))))
+
+if __name__ == '__main__':
+    print(min_values(Node.from_json(json.loads(sys.stdin.read().strip()))))
