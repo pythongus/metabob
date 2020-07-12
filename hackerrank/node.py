@@ -1,9 +1,12 @@
 """
-Binary Tree Module
+Node Module
+
+Used by binary tree or linked list.
 """
 
 
 class Node:
+    """The generic node of a tree or linked list"""
 
     def __init__(self, value: int, left: 'Node' = None, right: 'Node' = None):
         self.value = value

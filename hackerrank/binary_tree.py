@@ -2,9 +2,11 @@
 Binary Tree Module
 """
 from hackerrank.node import Node
+from hackerrank.linked_list import LinkedList
 
 
-class Tree:
+class BinaryTree:
+    """The binary tree implementation"""
 
     def __init__(self, root: Node):
         self.root = root
@@ -19,12 +21,12 @@ class Tree:
         self._height = height
 
     def depth_first_search(self, a_node: Node) -> bool:
-        right_nodes = []
+        right_nodes = LinkedList()
         node = self.root
         found = False
         while node and not found:
             if node.right:
-                right_nodes.append(node.right)
+                right_nodes.push(node.right)
             if node == a_node:
                 found = True
             elif node.left:
