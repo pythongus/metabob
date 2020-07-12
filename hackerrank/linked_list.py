@@ -52,6 +52,9 @@ class LinkedList:
         return None
 
     def pop(self):
+        """Returns the last element of the linked list, removing it
+        from the list itself. Returns None if the list is empty.
+        """
         if self.head:
             self._len -= 1
             return self.head.left
