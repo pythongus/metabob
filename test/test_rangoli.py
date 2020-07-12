@@ -3,7 +3,7 @@ Unit Tests for Rangoli Algorithm.
 """
 from hackerrank.rangoli import (
     create_lines,
-    get_symmetrical_rows,
+    get_change_positions_in_rows,
     get_dimensions,
     )
 
@@ -35,17 +35,16 @@ def test_create_with_6_lines():
     assert "".join(lines[6]) == '--f-e-d-c-b-c-d-e-f--'
 
 
-def test_get_symmetrical_rows_size_5():
-    _, _, middle = get_dimensions(5)
-    assert get_symmetrical_rows(middle) == [(9,), (7, 9, 11), (5, 7, 9, 11, 13), (3, 5, 7, 9, 11, 13, 15),
-                                            (1, 3, 5, 7, 9, 11, 13, 15, 17), (3, 5, 7, 9, 11, 13, 15),
-                                            (5, 7, 9, 11, 13), (7, 9, 11), (9,)]
+def test_get_change_positions_in_rows_size_5():
+    size = 5
+    _, _, middle = get_dimensions(size)
+    assert list(get_change_positions_in_rows(middle, size))[0] == ((9,), 5)
 
 
-def test_get_symmetrical_rows_size_4():
-    _, _, middle = get_dimensions(4)
-    assert get_symmetrical_rows(middle) == [(7,), (5, 7, 9), (3, 5, 7, 9, 11), (1, 3, 5, 7, 9, 11, 13),
-                                            (3, 5, 7, 9, 11), (5, 7, 9), (7,)]
+def test_get_change_positions_in_rows_size_4():
+    size = 4
+    _, _, middle = get_dimensions(size)
+    assert list(get_change_positions_in_rows(middle, size))[0] == ((7,), 4)
 
 
 def test_add_chars():

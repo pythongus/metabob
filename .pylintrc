@@ -1,0 +1,2 @@
+[tests]
+no-docstring-rgx = ^(test|_)
