@@ -3,7 +3,7 @@ Rangoli Module
 
 Prints the rangoli ascii art.
 """
-from typing import List
+from typing import List, Tuple
 
 
 BASE_CHAR = 96
@@ -39,7 +39,7 @@ def get_change_positions_in_rows(middle: int, size: int):
     return zip(positions, offset)
 
 
-def add_characters(positions: List[tuple], line_draw: list, middle: int):
+def add_characters(positions: Tuple[Tuple[int, ...], int], line_draw: List[str], middle: int):
     line_columns, offset = positions
     for pos in line_columns:
         line_draw[pos - 1] = chr(BASE_CHAR + offset + abs(middle - pos) // 2)
