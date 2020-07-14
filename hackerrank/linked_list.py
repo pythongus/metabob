@@ -19,6 +19,7 @@ class LinkedList:
         self._index = 0
 
     def is_empty(self) -> bool:
+        """Checks for the emptiness of the list"""
         return self.head.right is None
 
     def push(self, element: Node):
@@ -38,7 +39,6 @@ class LinkedList:
         """A next element is always to the right of the current
         element."""
         if self._current_node:
-            element = self._current_node
             self._current_node = self._current_node.right
             return self._current_node if self._current_node != self.head else self.head.right
         return None
@@ -46,7 +46,6 @@ class LinkedList:
     def rnext(self) -> Optional[Node]:
         """Next element to the left of the current element of the list"""
         if self._current_node:
-            element = self._current_node
             self._current_node = self._current_node.left
             return self._current_node if self._current_node != self.head else self.head.left
         return None

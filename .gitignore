@@ -3,3 +3,7 @@
 
 # Python cache
 **/__pycache__/
+
+
+# Vim sessions
+**/*.vim
