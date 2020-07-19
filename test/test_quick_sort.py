@@ -2,6 +2,8 @@
 Unit Tests For Quick Sort Algorithm.
 """
 import random
+from hypothesis import given
+import hypothesis.strategies as st
 from hackerrank.quick_sort import quick_sort
 
 
@@ -50,6 +52,7 @@ def test_sort_with_3_elements_4():
     assert elements == [1, 2, 3]
 
 
-def test_sort_with_10_elements():
-    elements = [random.randint(1, 10) for _ in range(10)]
+@given(st.lists(st.integers()))
+def test_sort_with_random_lists(xs):
+    elements = list(xs)
     assert quick_sort(elements) == sorted(elements)
