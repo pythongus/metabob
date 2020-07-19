@@ -4,6 +4,8 @@
 # Python cache
 **/__pycache__/
 
-
 # Vim sessions
 **/*.vim
+
+# Hypothesis config files
+.hypothesis
