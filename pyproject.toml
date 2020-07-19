@@ -8,6 +8,8 @@ authors = ["Gustavo Garcia"]
 python = "^3.8"
 pytest = "^5.4.3"
 ipython = "^7.16.1"
+snakeviz = "^2.1.0"
+pytest-cov = "^2.10.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.782"

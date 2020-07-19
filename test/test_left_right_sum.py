@@ -15,12 +15,8 @@ def test_left_right_sum_3():
 
 def left_right_sum(array):
     n_sum = 0
-    left = 0
-    right = sum(array)
-    for elem in array[:-1]:
-        left += elem
-        right -= elem
-        if left > right:
+    for index in range(1, len(array)):
+        if sum(array[:index]) > sum(array[index:]):
             n_sum += 1
 
     return n_sum
